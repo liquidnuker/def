@@ -18,16 +18,34 @@ input [type="button"],
 }
 
 .btn {
+  @extend %display--inline-block;
   @extend %mp--0;
   @extend %btn_font--sans-serif;
-  display: inline-block;
   font-size: 100%; 
   line-height: 1.15;  
 }
 
+// sizes
+// ==================================================/
+%btn--sm {
+
+}
+
+%btn--md {
+
+}
+
+%btn--lg {
+
+}
+
 // themes
 // ==================================================/
-.btn1-01 {
+%btn1-01_theme {
   @extend %padd--4;
   border: 1px solid #000;
+}
+
+.btn1-01 {
+  @extend %btn1-01_theme;
 }
