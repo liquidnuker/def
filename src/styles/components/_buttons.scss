@@ -17,6 +17,12 @@ input [type="button"],
   @extend %btn_font--sans-serif;
 }
 
+button[aria-pressed="true"],
+[role="button"][aria-pressed="true"] {
+    background-color: #999;
+    border: 1px solid #000;
+}
+
 .btn {
   @extend %display--inline-block;
   @extend %mp--0;

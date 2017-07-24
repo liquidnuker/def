@@ -19,13 +19,49 @@
 <h2 class="item-id">btn1-01</h2>
 <div class="row">    
   <div class="col-sm-12">
-    <button class="btn1-01">button1</button>
+    <button class="btn1-01" aria-pressed="false">button1</button>
     <input class="btn1-01" type="button" value="inputbutton1">
-    <div class="btn btn1-01">divbutton1</div>
+    <div class="btn btn1-01" role="button" tabindex="0" 
+ aria-pressed="false" onKeyPress="btn1_keyPressHandler(event)">divbutton1</div>
   </div>
 </div>  
 
  
 </body>
 <script src="dist/index.bundle.js"></script>
+<script>
+const x = document.querySelectorAll(".btn1-01");
+
+NodeList.prototype.btn1_EventListener = function(event, func) {
+    this.forEach(function(content, item) {
+       content.addEventListener(event, func);
+    });
+}
+
+x.btn1_EventListener("click", function (event) {
+  btn1_clickHandler(event.target);
+});
+
+x.btn1_EventListener("keypress", function (event) {
+  btn1_keyPressHandler(event.target);
+});
+
+function btn1_clickHandler(el) {
+  toggleAriaPressed(el);
+}
+
+function toggleAriaPressed(el) {
+  let ariaPressed = (el.getAttribute("aria-pressed") === "true");
+  el.setAttribute("aria-pressed", !ariaPressed);
+}
+
+
+function btn1_keyPressHandler(event) {
+  // space/enter
+  if (event.keyCode === 32 || event.keyCode === 13) {
+    event.preventDefault();
+    toggleAriaPressed(event.target);
+  }
+}
+</script>
 </html>
