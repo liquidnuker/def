@@ -18,6 +18,7 @@ input [type="button"],
 }
 
 button[aria-pressed="true"],
+input[aria-pressed="true"],
 [role="button"][aria-pressed="true"] {
     background-color: #999;
     border: 1px solid #000;

@@ -16,33 +16,33 @@
   <![endif]-->
 </head>
 <body>
-<h2 class="item-id">btn1-01</h2>
-<div class="row">    
-  <div class="col-sm-12">
-    <button class="btn1-01" aria-pressed="false">button1</button>
-    <input class="btn1-01" type="button" value="inputbutton1">
-    <div class="btn btn1-01" role="button" tabindex="0" 
- aria-pressed="false" onKeyPress="btn1_keyPressHandler(event)">divbutton1</div>
+  <h2 class="item-id">btn1-01</h2>
+  <div class="row">
+    <div class="col-sm-12">
+      <button class="btn1-01" aria-pressed="false">button1</button>
+      <input class="btn1-01" type="button" value="inputbutton1" aria-pressed="false">
+      <div class="btn btn1-01" role="button" tabindex="0"
+      aria-pressed="false" onkeypress="btn1_keyPressHandler(event)">divbutton1</div>
+    </div>
   </div>
-</div>  
-
- 
+  
 </body>
 <script src="dist/index.bundle.js"></script>
 <script>
-const x = document.querySelectorAll(".btn1-01");
+const btn1 = document.querySelectorAll(".btn1-01");
 
-NodeList.prototype.btn1_EventListener = function(event, func) {
-    this.forEach(function(content, item) {
-       content.addEventListener(event, func);
-    });
-}
+NodeList.prototype.btn1_EventListener = function (event, func) {
+  this.forEach(function (content, item) {
+    content.addEventListener(event, func);
+  });
+};
 
-x.btn1_EventListener("click", function (event) {
+btn1.btn1_EventListener("click", function (event) {
   btn1_clickHandler(event.target);
 });
 
-x.btn1_EventListener("keypress", function (event) {
+btn1.btn1_EventListener("keypress", function (event) {
+  console.log(event.target);
   btn1_keyPressHandler(event.target);
 });
 
@@ -54,7 +54,6 @@ function toggleAriaPressed(el) {
   let ariaPressed = (el.getAttribute("aria-pressed") === "true");
   el.setAttribute("aria-pressed", !ariaPressed);
 }
-
 
 function btn1_keyPressHandler(event) {
   // space/enter
